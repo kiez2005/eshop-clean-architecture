@@ -1,0 +1,10 @@
+{
+  "MailSettings": {
+    "DisplayName": "EShop Support",
+    "From": "noreply@eshop.local",
+    "Host": "smtp.gmail.com",
+    "Password": "your-app-password",
+    "Port": 587,
+    "UserName": "noreply@eshop.local"
+  }
+}

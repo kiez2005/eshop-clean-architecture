@@ -1,0 +1,16 @@
+{
+  "SecuritySettings": {
+    "JwtSettings": {
+      "key": "EShop_CleanArchitecture_SuperSecretKey_2026!@#",
+      "tokenExpirationInMinutes": 60,
+      "refreshTokenExpirationInDays": 7
+    },
+    "AdminSettings": {
+      "email": "admin@eshop.local",
+      "userName": "admin",
+      "password": "Admin12345678@",
+      "firstName": "System",
+      "lastName": "Administrator"
+    }
+  }
+}

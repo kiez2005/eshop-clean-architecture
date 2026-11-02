@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=localhost,1433;Initial Catalog=EShopDb;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True"
+  }
+}
