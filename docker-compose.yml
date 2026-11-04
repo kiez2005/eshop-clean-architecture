@@ -1,0 +1,41 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: eshop-sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=YourStrong@Password123
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: eshop-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+
+  eshop-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eshop-api
+    depends_on:
+      - sqlserver
+      - redis
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ConnectionStrings__DefaultConnection=Data Source=sqlserver,1433;Initial Catalog=EShopDb;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True
+      - CacheSettings__UseDistributedCache=true
+      - CacheSettings__PreferRedis=true
+      - CacheSettings__RedisURL=redis:6379
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+volumes:
+  sqlserver_data:
